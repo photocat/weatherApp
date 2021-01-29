@@ -1,5 +1,22 @@
 # WeatherApp
-Simple RN Weather App with Firebase Auth
+Simple Demo React Native Weather Application with Firebase Auth
+
+## Installation
+1. Install React Native as described [here](https://facebook.github.io/react-native/docs/getting-started.html#content)
+
+2. Clone this repository
+
+3. Run `npm install` , all required components will be installed automatically
+
+4. Run `npm run start` from project root directory
+
+### iOS
+Run `pod install` from weatherApp/ios folder
+Run `npm run ios` from project root directory
+
+### Android
+Run `npm run android` from project root directory
+
 
 ## Screen Login
 | ![Login Android](https://github.com/photocat/images/blob/main/Screenshot_1611930189.png) | ![Login iOS](https://github.com/photocat/images/blob/main/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202021-01-29%20at%2016.24.55.png) |
