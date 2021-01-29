@@ -23,7 +23,7 @@ Run `npm run android` from project root directory
 |:--:|:--:|
 | *Android* | *iOS* |
 
-This screen have two inputs for email and passwords, button for submit, and link to screen "Sign up"
+This screen have two inputs for email and password, button for submit, and link to screen "Sign up"
 Button disabled until fields "Email" and "Password" have no values.
 After submiting application look in Firebase and if user exist and password correct redirect user to Main screen.
 
@@ -39,4 +39,4 @@ This screen has similar functionality to Login screen. But after submiting it wi
 |:--:|:--:|
 | *Android* | *iOS* |
 
-At the top of this screen we have city selector. In middle section screen have main content, were we can see weather in selected city. At the bottom placed "Logout" button, which logout user and redirect him on Login screen.
+At the top of this screen we have city selector. In middle section screen have main content, where we can see weather in selected city. At the bottom placed "Logout" button, which logout user and redirect him on Login screen.
