@@ -23,8 +23,6 @@ export default function HomeScreen({navigation}) {
       .catch((error) => console.log(error));
   };
 
-  console.log(user);
-
   return (
     weather && (
       <View style={styles.container}>
@@ -51,7 +49,7 @@ export default function HomeScreen({navigation}) {
             style={{height: 100, width: 100}}
             source={{
               uri:
-                'http://openweathermap.org/img/wn/' +
+                'https://openweathermap.org/img/wn/' +
                 weather.weather[0].icon +
                 '@2x.png',
             }}
