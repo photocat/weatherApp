@@ -1,2 +1,2 @@
 # weatherApp
-Simple RN Weather App
+Simple RN Weather App with Firebase Auth
