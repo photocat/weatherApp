@@ -6,7 +6,7 @@ import FormInput from '../components/FormInput';
 export default function SignupScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const {register} = useContext(AuthContext);
+  const {register, error} = useContext(AuthContext);
 
   return (
     <View style={styles.container}>
@@ -25,9 +25,11 @@ export default function SignupScreen() {
         onChangeText={(userPassword) => setPassword(userPassword)}
         secureTextEntry={true}
       />
+      <Text style={styles.error}>{error}</Text>
       <FormButton
         buttonTitle="Signup"
-        onPress={() => register(email, password)}
+        onPress={() => (email && password ? register(email, password) : null)}
+        isDisabled={email && password ? false : true}
       />
     </View>
   );
@@ -39,8 +41,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   text: {
     fontSize: 24,
     marginBottom: 10,
+  },
+
+  error: {
+    color: '#F2545B',
+    textAlign: 'center',
+    fontSize: 16,
+    lineHeight: 20,
+    marginTop: 12,
+    alignItems: 'center',
+    paddingHorizontal: 40,
+    marginBottom: 12,
+    minHeight: 40,
   },
 });

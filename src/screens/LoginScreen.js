@@ -1,17 +1,29 @@
-import React, {useState, useContext} from 'react';
+import React, {useCallback, useState, useContext} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import FormButton from '../components/FormButton';
 import FormInput from '../components/FormInput';
 import {AuthContext} from '../navigation/AuthProvider';
+import {useFocusEffect} from '@react-navigation/native';
 
-export default function LoginScreen({navigation}) {
+export default function LoginScreen({route, navigation}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const {login} = useContext(AuthContext);
+  const {login, error, setError} = useContext(AuthContext);
+
+  useFocusEffect(
+    useCallback(() => {
+      setError(null);
+    }, [route]),
+  );
+
+  const signUpHandler = () => {
+    setError(null);
+    navigation.navigate('Signup');
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Welcome to Weather App</Text>
+      <Text style={styles.text}>Welcome</Text>
       <FormInput
         value={email}
         placeholderText="Email"
@@ -26,10 +38,13 @@ export default function LoginScreen({navigation}) {
         onChangeText={(userPassword) => setPassword(userPassword)}
         secureTextEntry={true}
       />
-      <FormButton buttonTitle="Login" onPress={() => login(email, password)} />
-      <TouchableOpacity
-        style={styles.navButton}
-        onPress={() => navigation.navigate('Signup')}>
+      <Text style={styles.error}>{error}</Text>
+      <FormButton
+        buttonTitle="Login"
+        onPress={() => (email && password ? login(email, password) : null)}
+        isDisabled={email && password ? false : true}
+      />
+      <TouchableOpacity style={styles.navButton} onPress={signUpHandler}>
         <Text style={styles.navButtonText}>New user? Join here</Text>
       </TouchableOpacity>
     </View>
@@ -43,15 +58,30 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   text: {
     fontSize: 24,
     marginBottom: 10,
   },
+
+  error: {
+    color: '#F2545B',
+    textAlign: 'center',
+    fontSize: 16,
+    lineHeight: 20,
+    marginTop: 12,
+    alignItems: 'center',
+    paddingHorizontal: 40,
+    marginBottom: 12,
+    minHeight: 40,
+  },
+
   navButton: {
     marginTop: 15,
   },
+
   navButtonText: {
     fontSize: 20,
-    color: '#6646ee',
+    color: '#2191FB',
   },
 });
